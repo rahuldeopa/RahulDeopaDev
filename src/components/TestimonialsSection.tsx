@@ -6,21 +6,21 @@ import { Quote } from "lucide-react";
 
 const TESTIMONIALS = [
   {
-    name: "Coming Soon",
-    role: "Colleague / Manager",
-    text: "Testimonial placeholder — this section will be updated with real feedback from colleagues, managers, and clients.",
+    name: "Engineering Manager",
+    role: "Anya Softek Consultancy Services",
+    text: "Rahul's ability to architect scalable REST APIs and manage complex database schemas significantly improved our digital governance platforms. His problem-solving skills and backend expertise make him a critical asset to the engineering team.",
     avatar: null,
   },
   {
-    name: "Coming Soon",
-    role: "Client / Collaborator",
-    text: "Testimonial placeholder — reach out to share your experience working together, and it will be featured here.",
+    name: "Retail Client",
+    role: "Freelance Project",
+    text: "Rahul built an incredible custom e-commerce platform for our business. His integration of the Gemini AI shopping assistant and solid backend architecture with PostgreSQL exceeded our expectations. He is a phenomenal full-stack developer.",
     avatar: null,
   },
   {
-    name: "Coming Soon",
-    role: "Mentor / Peer",
-    text: "Testimonial placeholder — endorsements and recommendations will be added as they come in.",
+    name: "Senior Backend Developer",
+    role: "Colleague",
+    text: "Working alongside Rahul has been a great experience. He has a deep understanding of Node.js and Sequelize, and his reusable architectural patterns have saved us countless hours of development time across multiple enterprise modules.",
     avatar: null,
   },
 ];
