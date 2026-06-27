@@ -41,11 +41,20 @@ export default function ContactSection() {
   const onSubmit = async (data: ContactFormData) => {
     setSubmitState("loading");
     try {
-      // Simulate form submission - replace with actual API endpoint
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      console.log("Contact form submitted:", data);
-      setSubmitState("success");
-      reset();
+      const response = await fetch("https://formspree.io/f/xwvdodaz", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setSubmitState("success");
+        reset();
+      } else {
+        setSubmitState("error");
+      }
       setTimeout(() => setSubmitState("idle"), 3000);
     } catch {
       setSubmitState("error");
