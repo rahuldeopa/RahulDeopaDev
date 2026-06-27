@@ -8,7 +8,7 @@ export const SITE_CONFIG = {
   linkedin: "https://linkedin.com/in/rahuldeopa",
   email: "rahuldeopa1818@gmail.com",
   phone: "",
-  resumeUrl: "/resume.pdf",
+  resumeUrl: "/resume/RahulDeopaResume2026.pdf",
 };
 
 export const NAV_LINKS = [
