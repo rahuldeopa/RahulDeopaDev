@@ -1,26 +1,304 @@
 @import "tailwindcss";
 
+/* ─── Design Tokens ─── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #09090B;
+  --bg-card: #111111;
+  --border: #27272A;
+  --primary: #2563EB;
+  --primary-hover: #1D4ED8;
+  --secondary: #60A5FA;
+  --text: #FAFAFA;
+  --text-muted: #A1A1AA;
+  --accent: #22C55E;
+  --accent-hover: #16A34A;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-bg-card: var(--bg-card);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Base ─── */
+/* Base styles moved to Tailwind preflight */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: var(--primary);
+  color: var(--text);
+}
+
+/* ─── Grid Background Pattern ─── */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.grid-pattern-dense {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* ─── Dot Pattern ─── */
+.dot-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ─── Radial Glow ─── */
+.radial-glow {
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(37, 99, 235, 0.06),
+    transparent 60%
+  );
+}
+
+/* ─── Section Spacing ─── */
+.section-padding {
+  padding: 96px 0;
+}
+
+/* ─── Card Base ─── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+/* ─── Glow Effect ─── */
+.glow-primary {
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.15);
+}
+
+.glow-accent {
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.15);
+}
+
+/* ─── Shimmer Loading ─── */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--bg-card) 25%,
+    rgba(255, 255, 255, 0.05) 50%,
+    var(--bg-card) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ─── Terminal Cursor Blink ─── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.terminal-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+/* ─── Compile Effect ─── */
+@keyframes compile {
+  0% { opacity: 0; transform: translateY(4px); }
+  50% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-4px); }
+}
+
+/* ─── Scroll Progress Bar ─── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: var(--primary);
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
+
+/* ─── Code block styling ─── */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* ─── Focus styles ─── */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ─── cmdk dialog ─── */
+[cmdk-dialog-overlay] {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 9998;
+}
+
+[cmdk-dialog] {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(640px, 90vw);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  z-index: 9999;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+[cmdk-input] {
+  width: 100%;
+  padding: 16px 20px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  font-size: 16px;
+  font-family: var(--font-sans);
+  outline: none;
+}
+
+[cmdk-input]::placeholder {
+  color: var(--text-muted);
+}
+
+[cmdk-list] {
+  max-height: 320px;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+[cmdk-item] {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 14px;
+  transition: background 0.15s;
+}
+
+[cmdk-item][data-selected="true"] {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--text);
+}
+
+[cmdk-item]:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+}
+
+[cmdk-empty] {
+  padding: 24px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+[cmdk-group-heading] {
+  padding: 8px 12px 4px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+/* ─── Light Mode ─── */
+.light {
+  --bg: #FFFFFF;
+  --bg-card: #F9FAFB;
+  --border: #E5E7EB;
+  --text: #111827;
+  --text-muted: #6B7280;
+}
+
+.light .grid-pattern {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+.light code {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.light ::-webkit-scrollbar-track {
+  background: #F9FAFB;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
 }
