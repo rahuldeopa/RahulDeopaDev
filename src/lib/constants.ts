@@ -132,7 +132,7 @@ export const PROJECTS = [
     technologies: ["Node.js", "Express.js", "React", "MySQL", "JWT"],
     highlights: ["Authentication", "Realtime interactions", "REST APIs"],
     github: "https://github.com/rahuldeopa/QuerySolve",
-    live: null,
+    live: "https://querysolve.rahuldeopa.dev/",
     image: "/projects/querysolve.webp",
     color: "#2563EB",
   },
