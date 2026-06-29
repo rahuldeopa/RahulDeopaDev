@@ -12,6 +12,7 @@ import AchievementsSection from "@/components/AchievementsSection";
 import NowBuildingSection from "@/components/NowBuildingSection";
 import GitHubSection from "@/components/GitHubSection";
 import CodingProfilesSection from "@/components/CodingProfilesSection";
+import GoogleBadgesSection from "@/components/GoogleBadgesSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import InteractiveTerminal from "@/components/InteractiveTerminal";
 import ContactSection from "@/components/ContactSection";
@@ -113,6 +114,10 @@ export default function Home() {
 
         <div className="border-t border-border">
           <CodingProfilesSection />
+        </div>
+
+        <div className="border-t border-border">
+          <GoogleBadgesSection />
         </div>
 
         <div className="border-t border-border">

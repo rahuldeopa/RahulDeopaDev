@@ -5,6 +5,7 @@ import SectionHeader from "./SectionHeader";
 import AnimatedSection from "./AnimatedSection";
 import { ExternalLink, Sparkles, ArrowUpRight } from "lucide-react";
 import { GithubIcon } from "./icons";
+import Image from "next/image";
 
 export default function ProjectsSection() {
   return (
@@ -31,7 +32,15 @@ export default function ProjectsSection() {
                     background: `linear-gradient(135deg, ${project.color}15, ${project.color}05)`,
                   }}
                 >
-                  {project.isComingSoon ? (
+                  {project.image ? (
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                    />
+                  ) : project.isComingSoon ? (
                     <div className="flex flex-col items-center justify-center h-full gap-3">
                       <Sparkles size={32} style={{ color: project.color }} />
                       <span

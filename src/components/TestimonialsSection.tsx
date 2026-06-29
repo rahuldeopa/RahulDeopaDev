@@ -7,7 +7,7 @@ import { Quote } from "lucide-react";
 const TESTIMONIALS = [
   {
     name: "Engineering Manager",
-    role: "Anya Softek Consultancy Services",
+    role: "Anya Softek Consultancy",
     text: "Rahul's ability to architect scalable REST APIs and manage complex database schemas significantly improved our digital governance platforms. His problem-solving skills and backend expertise make him a critical asset to the engineering team.",
     avatar: null,
   },

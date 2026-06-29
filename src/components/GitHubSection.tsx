@@ -96,7 +96,7 @@ export default function GitHubSection() {
           <>
             {/* Stats */}
             <AnimatedSection>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
                 <StatCard
                   icon={<GithubIcon size={18} />}
                   label="Repositories"
@@ -111,11 +111,6 @@ export default function GitHubSection() {
                   icon={<Users size={18} />}
                   label="Following"
                   value={user.following || "-"}
-                />
-                <StatCard
-                  icon={<Star size={18} />}
-                  label="Total Stars"
-                  value={repos.reduce((sum, r) => sum + r.stargazers_count, 0) || "-"}
                 />
               </div>
             </AnimatedSection>
@@ -159,7 +154,7 @@ export default function GitHubSection() {
                           {repo.language}
                         </span>
                       )}
-                      {repo.stargazers_count > 0 && (
+                      {repo.stargazers_count >= 10 && (
                         <span className="flex items-center gap-1 text-xs text-text-muted">
                           <Star size={12} />
                           {repo.stargazers_count}

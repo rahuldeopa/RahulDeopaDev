@@ -83,7 +83,7 @@ export const TECH_STACK = {
 export const EXPERIENCE = [
   {
     title: "Software Development Consultant",
-    company: "Anya Softek Consultancy Services",
+    company: "Anya Softek Consultancy",
     period: "March 2025 - Present",
     description:
       "Backend engineering team responsible for building and maintaining digital governance platforms for citizen services, taxation, pension management, and administrative workflows.",
@@ -158,7 +158,7 @@ export const PROJECTS = [
     highlights: ["AI shopping assistant", "Job processing", "Order management"],
     github: null,
     live: null,
-    image: "/projects/ecommerce.webp",
+    image: null,
     color: "#22C55E",
   },
   {
@@ -170,7 +170,7 @@ export const PROJECTS = [
     highlights: ["Live bidding", "Real-time notifications", "Workflow automation"],
     github: "https://github.com/rahuldeopa/real-time-bidding",
     live: null,
-    image: "/projects/bidding.webp",
+    image: null,
     color: "#A855F7",
   },
 ];
@@ -195,7 +195,7 @@ export const TIMELINE = [
     year: "2025",
     type: "experience" as const,
     title: "Software Development Consultant",
-    subtitle: "Anya Softek Consultancy Services",
+    subtitle: "Anya Softek Consultancy",
     description: "Building digital governance platforms and workflow-driven enterprise applications.",
   },
   {
@@ -229,6 +229,33 @@ export const ACHIEVEMENTS = [
   { text: "REST API Architecture", icon: "Globe" },
   { text: "OAuth Integration", icon: "KeyRound" },
   { text: "AI-Powered Projects", icon: "Brain" },
+];
+
+export const GOOGLE_BADGES = [
+  {
+    name: "Implement Cloud Collaboration and Productivity Workflows",
+    image: "https://cdn.qwiklabs.com/%2BbjdX5O0OY%2BrkcxnLEzmRDHH1CGEA5%2BIPCtohoba8Q4%3D"
+  },
+  {
+    name: "Build LookML Objects in Looker",
+    image: "https://cdn.qwiklabs.com/2jMvcegkVBStJcAG8PROrqqVqV%2FJXdibeUHJWjR%2Fevg%3D"
+  },
+  {
+    name: "Use Functions, Formulas, and Charts in Google Sheets",
+    image: "https://cdn.qwiklabs.com/HfPv8lIiBai0YePMUr6vmjXHcZj1k8YXlGTmSH1VINY%3D"
+  },
+  {
+    name: "Using the Google Cloud Speech API",
+    image: "https://cdn.qwiklabs.com/Jl2lXar84pZZ37x7xSyQc92iN9Q7%2BKrgPHabLHcBenE%3D"
+  },
+  {
+    name: "Deploy and Manage Applications on Google App Engine",
+    image: "https://cdn.qwiklabs.com/DKJP7banNV6UVQnKu7FQULAlyRIhpwJ7QYUMbRhRuSI%3D"
+  },
+  {
+    name: "Deploy Kubernetes Applications on Google Cloud",
+    image: "https://cdn.qwiklabs.com/G0cetIHinaz0Ugm4Pp3dyAjGxACSEq8PTmJkG4qG9IA%3D"
+  }
 ];
 
 export const CODING_PROFILES = [

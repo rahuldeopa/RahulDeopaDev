@@ -4,6 +4,8 @@ import { TIMELINE } from "@/lib/constants";
 import SectionHeader from "./SectionHeader";
 import AnimatedSection from "./AnimatedSection";
 import { GraduationCap, Briefcase, Award, BookOpen } from "lucide-react";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const typeIcons: Record<string, React.ReactNode> = {
   education: <GraduationCap size={16} />,
@@ -20,6 +22,14 @@ const typeColors: Record<string, string> = {
 };
 
 export default function TimelineSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"],
+  });
+
+  const height = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
   return (
     <section id="timeline" className="section-padding relative">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
@@ -29,9 +39,15 @@ export default function TimelineSection() {
           description="Education, experience, and milestones along the way."
         />
 
-        <div className="relative">
-          {/* Vertical line */}
+        <div className="relative" ref={containerRef}>
+          {/* Vertical line background */}
           <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-px bg-border sm:-translate-x-px" />
+          
+          {/* Vertical animated line */}
+          <motion.div 
+            className="absolute left-4 sm:left-1/2 top-0 w-px bg-primary sm:-translate-x-px origin-top z-0"
+            style={{ height }}
+          />
 
           <div className="space-y-10">
             {TIMELINE.map((item, index) => {

@@ -14,6 +14,8 @@ import {
   GitCommitHorizontal,
   Briefcase,
 } from "lucide-react";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const iconMap: Record<string, React.ReactNode> = {
   Layers: <Layers size={14} />,
@@ -27,6 +29,14 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export default function ExperienceSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"],
+  });
+
+  const height = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
   return (
     <section id="experience" className="section-padding relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -36,12 +46,21 @@ export default function ExperienceSection() {
           description="Building enterprise-grade software at scale."
         />
 
-        <div className="space-y-8">
+        <div className="relative space-y-12" ref={containerRef}>
+          {/* Background line */}
+          <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-border" />
+          
+          {/* Animated line */}
+          <motion.div 
+            className="absolute left-0 top-0 w-[2px] bg-primary origin-top z-0"
+            style={{ height }}
+          />
+
           {EXPERIENCE.map((exp, index) => (
             <AnimatedSection key={index} delay={0.1}>
-              <div className="relative pl-8 border-l-2 border-border">
+              <div className="relative pl-8">
                 {/* Timeline dot */}
-                <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-bg" />
+                <div className="absolute left-[-7px] top-1 w-4 h-4 rounded-full bg-primary border-4 border-bg z-10" />
 
                 {/* Header */}
                 <div className="mb-6">

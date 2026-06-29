@@ -49,19 +49,19 @@ export default function Navbar({ onOpenCommandPalette, theme, onToggleTheme }: N
 
   return (
     <>
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          isScrolled
-            ? "bg-bg/80 backdrop-blur-xl border-b border-border"
-            : "bg-transparent"
-        )}
-      >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between h-16">
+      <div className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4 pointer-events-none">
+        <motion.nav
+          initial={{ y: -100 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className={cn(
+            "pointer-events-auto w-full transition-all duration-500",
+            isScrolled
+              ? "max-w-5xl bg-gradient-to-r from-bg/80 via-primary/5 to-bg/80 backdrop-blur-xl border border-border/50 shadow-lg shadow-black/5 dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)] rounded-full px-4 sm:px-6 py-0.5"
+              : "max-w-6xl bg-transparent border-transparent px-0"
+          )}
+        >
+          <div className="flex items-center justify-between h-14 sm:h-16">
             {/* Logo */}
             <a
               href="#home"
@@ -144,8 +144,8 @@ export default function Navbar({ onOpenCommandPalette, theme, onToggleTheme }: N
               {isMobileOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
-        </div>
-      </motion.nav>
+        </motion.nav>
+      </div>
 
       {/* Mobile Drawer */}
       <AnimatePresence>
